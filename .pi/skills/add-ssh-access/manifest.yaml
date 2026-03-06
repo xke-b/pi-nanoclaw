@@ -1,0 +1,15 @@
+skill: ssh-access
+version: 1.0.0
+description: "Allowlisted SSH forwarding for container agents with ProxyJump support"
+core_version: 0.1.0
+adds: []
+modifies:
+  - src/container-runner.ts
+  - src/types.ts
+  - container/Dockerfile
+  - setup/service.ts
+  - .env.example
+structured: {}
+conflicts: []
+depends: []
+test: "npm run build && npx vitest run src/container-runner.test.ts"

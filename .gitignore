@@ -36,3 +36,7 @@ groups/global/*
 .nanoclaw/
 
 agents-sdk-docs
+
+# Local runtime artifacts
+nanoclaw.pid
+start-nanoclaw.sh

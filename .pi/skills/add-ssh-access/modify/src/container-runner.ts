@@ -156,11 +156,8 @@ function parseAllowedSshHosts(group: RegisteredGroup): AllowedSshHost[] {
   const envConfig = readSshEnvConfig();
   const rawList = fromGroup
     ? configured
-    : (
-        process.env.SSH_ALLOWED_HOSTS ||
-        envConfig.SSH_ALLOWED_HOSTS ||
-        ''
-      ).split(',');
+    : (process.env.SSH_ALLOWED_HOSTS || envConfig.SSH_ALLOWED_HOSTS || '')
+        .split(',');
 
   const parsed: AllowedSshHost[] = [];
   for (const raw of rawList) {
@@ -268,10 +265,9 @@ function parseHostSshConfig(sshConfigPath: string): Map<string, ParsedSshHost> {
   return hostMap;
 }
 
-function configureSshAccess(group: RegisteredGroup): {
-  mounts: VolumeMount[];
-  extraEnv: Record<string, string>;
-} {
+function configureSshAccess(
+  group: RegisteredGroup,
+): { mounts: VolumeMount[]; extraEnv: Record<string, string> } {
   const mounts: VolumeMount[] = [];
   const extraEnv: Record<string, string> = {};
 
@@ -364,7 +360,7 @@ function configureSshAccess(group: RegisteredGroup): {
 
   configLines.push('Host *');
   configLines.push(
-    '  ProxyCommand /bin/sh -c \'echo "NanoClaw SSH policy denied host: %h" >&2; exit 1\'',
+    "  ProxyCommand /bin/sh -c 'echo \"NanoClaw SSH policy denied host: %h\" >&2; exit 1'",
   );
   configLines.push('  BatchMode yes');
 
