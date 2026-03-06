@@ -21,6 +21,7 @@
     "test:e2e-docker": "RUN_DOCKER_E2E=1 vitest run src/pi-container-smoke.e2e.test.ts"
   },
   "dependencies": {
+    "@larksuiteoapi/node-sdk": "^1.59.0",
     "@types/qrcode-terminal": "^0.12.0",
     "@whiskeysockets/baileys": "^7.0.0-rc.9",
     "better-sqlite3": "^11.8.1",
