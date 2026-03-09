@@ -51,12 +51,12 @@ describe('pi replacement audit', () => {
     expect(src).not.toContain("containerPath: '/home/node/.claude'");
   });
 
-  it('readSecrets no longer forwards Claude Code oauth token', () => {
+  it('uses credential proxy placeholders instead of exposing real tokens', () => {
     const runnerPath = path.join(process.cwd(), 'src', 'container-runner.ts');
     const src = fs.readFileSync(runnerPath, 'utf-8');
 
-    expect(src).not.toContain('CLAUDE_CODE_OAUTH_TOKEN');
-    expect(src).toContain("'ANTHROPIC_API_KEY'");
+    expect(src).toContain('CLAUDE_CODE_OAUTH_TOKEN=placeholder');
+    expect(src).toContain('ANTHROPIC_API_KEY=placeholder');
   });
 
   it('documents e2e replacement specification', () => {
