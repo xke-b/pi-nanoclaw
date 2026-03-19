@@ -12,30 +12,52 @@
   <a href="https://discord.gg/VDdww8qS42"><img src="https://img.shields.io/discord/1470188214710046894?label=Discord&logo=discord&v=2" alt="Discord" valign="middle"></a>&nbsp; • &nbsp;
   <a href="repo-tokens"><img src="repo-tokens/badge.svg" alt="34.9k tokens, 17% of context window" valign="middle"></a>
 </p>
+
 Using Pi Coding Agent, NanoClaw can dynamically rewrite its code to customize its feature set for your needs.
 
 **New:** First AI assistant to support [Agent Swarms](https://github.com/mariozechner/pi-coding-agent). Spin up teams of agents that collaborate in your chat.
+
+---
+
+<h2 align="center">🐳 Now Runs in Docker Sandboxes</h2>
+<p align="center">Every agent gets its own isolated container inside a micro VM.<br>Hypervisor-level isolation. Millisecond startup. No complex setup.</p>
+
+**macOS (Apple Silicon)**
+```bash
+curl -fsSL https://nanoclaw.dev/install-docker-sandboxes.sh | bash
+```
+
+**Windows (WSL)**
+```bash
+curl -fsSL https://nanoclaw.dev/install-docker-sandboxes-windows.sh | bash
+```
+
+> Currently supported on macOS (Apple Silicon) and Windows (x86). Linux support coming soon.
+
+<p align="center"><a href="https://nanoclaw.dev/blog/nanoclaw-docker-sandboxes">Read the announcement →</a>&nbsp; · &nbsp;<a href="docs/docker-sandboxes.md">Manual setup guide →</a></p>
+
+---
 
 ## Project Origin and This Fork
 
 This repository is a community-maintained fork of NanoClaw. Full credit for the original project vision and architecture goes to the upstream NanoClaw creator and contributors.
 
 - Upstream project: https://github.com/qwibitai/nanoclaw
-- This fork: https://github.com/xke-b/pi-nanoclaw
+- This fork: https://github.com/deepflame-ai/pi-nanoclaw
 
 The goal of this fork is to keep NanoClaw minimal while adapting it to a Pi-native runtime and workflow.
 
 ## Quick Start
 
 ```bash
-git clone https://github.com/xke-b/pi-nanoclaw.git
+git clone https://github.com/deepflame-ai/pi-nanoclaw.git
 cd pi-nanoclaw
 pi
 ```
 
 Then run `/setup`. Pi Coding Agent handles everything: dependencies, authentication, container setup and service configuration.
 
-> **Note:** Commands prefixed with `/` (like `/setup`, `/add-whatsapp`) are [Pi Coding Agent skills](https://github.com/mariozechner/pi-coding-agent). Type them inside the `pi` CLI prompt, not in your regular terminal.
+> **Note:** Commands prefixed with `/` (like `/setup`, `/add-whatsapp`) are Pi Coding Agent skills. Type them inside the `pi` CLI prompt, not in your regular terminal.
 
 ## Philosophy
 
@@ -52,7 +74,7 @@ Then run `/setup`. Pi Coding Agent handles everything: dependencies, authenticat
 - No monitoring dashboard; ask Pi what's happening.
 - No debugging tools; describe the problem and Pi helps fix it.
 
-**Skills over features.** Instead of adding features (e.g. support for Telegram) to the codebase, contributors submit [pi skills](https://github.com/mariozechner/pi-coding-agent) like `/add-telegram` that transform your fork. You end up with clean code that does exactly what you need.
+**Skills over features.** Instead of adding features (e.g. support for Telegram) to the codebase, contributors submit pi skills like `/add-telegram` that transform your fork. You end up with clean code that does exactly what you need.
 
 **Best harness, best model.** NanoClaw runs on the Pi Coding Agent SDK inside each container. This keeps the runtime lightweight and fully hackable while preserving tool-driven customization.
 
@@ -63,8 +85,8 @@ Then run `/setup`. Pi Coding Agent handles everything: dependencies, authenticat
 - **Main channel** - Your private channel (self-chat) for admin control; every group is completely isolated
 - **Scheduled tasks** - Recurring jobs that run Pi agents and can message you back
 - **Web access** - Search and fetch content from the Web
-- **Container isolation** - Agents are sandboxed in Apple Container (macOS) or Docker (macOS/Linux)
-- **Agent Swarms** - Spin up teams of specialized agents that collaborate on complex tasks. NanoClaw is the first personal AI assistant to support agent swarms.
+- **Container isolation** - Agents are sandboxed in Docker Sandboxes (micro VM isolation), Apple Container (macOS), or Docker (macOS/Linux)
+- **Agent Swarms** - Spin up teams of specialized agents that collaborate on complex tasks
 - **Optional integrations** - Add Gmail (`/add-gmail`) and more via skills
 
 ## Usage
